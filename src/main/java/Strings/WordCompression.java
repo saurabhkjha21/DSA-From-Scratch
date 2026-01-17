@@ -1,6 +1,6 @@
 package Strings;
 
-public class CharacterCount {
+public class WordCompression {
     public static void main(String[] args) {
         String s = "aaabbccccddeeeee";
         StringBuilder result = new StringBuilder();
