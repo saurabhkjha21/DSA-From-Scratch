@@ -8,6 +8,7 @@ public class GroupAnagrams {
     public static void main(String[] args) {
        String[] strs =  {"eat","tea","tan","ate","nat","bat"};
         System.out.println(groupAnagramsApproach1(strs));
+        System.out.println(groupAnagramsApproach2(strs));
 
     }
     /*
@@ -47,5 +48,41 @@ public class GroupAnagrams {
          */
         return new ArrayList<>(map.values());
 
+    }
+
+    public static List<List<String>> groupAnagramsApproach2(String[] strs){
+        if(strs.length==0 || strs==null){
+            return new ArrayList<>();
+        }
+        Map<String, List<String>> map = new HashMap<>();
+
+        for(String s : strs){
+            /*
+            Step 1: a. create a frequency array
+            b.count characters
+             */
+            int[] frq = new int[26];//create frq array of 26
+
+            //count characters
+            for(char ch : s.toCharArray()){
+                frq[ch - 'a']++;
+            }
+            /*
+            Step 2 :
+             */
+
+            StringBuilder keyBuilder = new StringBuilder();
+            for(int i=0; i<26; i++){
+                keyBuilder.append("#");
+                keyBuilder.append(frq[i]);
+            }
+
+            String key = keyBuilder.toString();
+
+            map.putIfAbsent(key, new ArrayList<>());
+            map.get(key).add(s);
+
+        }
+        return new ArrayList<>(map.values());
     }
 }
