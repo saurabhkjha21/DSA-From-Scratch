@@ -29,6 +29,7 @@ public class TreeBFS {
             if(current.right!=null){
                 queue.add(current.right);
             }
+            System.out.println();
         }
 
     }
